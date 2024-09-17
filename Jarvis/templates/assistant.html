@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jarvis Voice Assistant</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+        .container {
+            margin-top: 20%;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #output {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+    </style>
+    <script>
+        function startListening() {
+            fetch('/process_command', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    command: document.getElementById('voiceCommand').value
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('output').textContent = data.response;
+            })
+            .catch(error => {
+                document.getElementById('output').textContent = 'Error: ' + error;
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Jarvis Voice Assistant</h1>
+        <input type="text" id="voiceCommand" placeholder="Enter a command">
+        <br><br>
+        <button onclick="startListening()">Submit Command</button>
+        <p id="output">Awaiting command...</p>
+    </div>
+</body>
+</html>
