@@ -1,6 +1,6 @@
-from flask import Flask, render_template, jsonify
-import speech_recognition as sr
-import pyttsx3
+# from flask import Flask, render_template, jsonify
+# import speech_recognition as sr
+# import pyttsx3
 import os
 import time
 from threading import Lock
@@ -148,3 +148,7 @@ def listen():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+# To run this script, open a terminal and run the following command:
+# python app.py 
+# Then, open a browser and navigate to http://localhost:5000/ to access the web interface.
