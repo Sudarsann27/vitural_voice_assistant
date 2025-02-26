@@ -1,6 +1,6 @@
-from flask import Flask, render_template, jsonify
-import speech_recognition as sr
-import pyttsx3
+# from flask import Flask, render_template, jsonify
+# import speech_recognition as sr
+# import pyttsx3
 import os
 import time
 from threading import Lock
